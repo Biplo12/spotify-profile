@@ -6,3 +6,8 @@ body {
   font-family: CircularStd;
   font-style: normal;
 }
+
+.sidebar-link-icon svg {
+  width: 20px;
+  height: 20px;
+}
