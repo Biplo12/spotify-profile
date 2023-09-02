@@ -7,7 +7,12 @@ const REPOSITORY_URL = 'https://github.com/Biplo12/spotify-profile';
 
 const GithubLogo: React.FC = (): JSX.Element => {
   return (
-    <Link href={REPOSITORY_URL} target='_blank' rel='noopener noreferrer'>
+    <Link
+      href={REPOSITORY_URL}
+      target='_blank'
+      rel='noopener noreferrer'
+      className='mxsm:hidden'
+    >
       <GithubLogoIcon
         className='h-10 w-10'
         style={{ '--fill-icon': '#fff' }}

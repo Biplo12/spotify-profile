@@ -17,12 +17,12 @@ const SidebarLinks: React.FC = (): JSX.Element => {
     },
     {
       icon: <MicIcon />,
-      text: 'Top Artists',
+      text: 'Artists',
       link: '/artists',
     },
     {
       icon: <NoteIcon />,
-      text: 'Top Tracks',
+      text: 'Songs',
       link: '/songs',
     },
     {
@@ -37,7 +37,7 @@ const SidebarLinks: React.FC = (): JSX.Element => {
     },
   ];
   return (
-    <div className='flex w-full flex-col items-center justify-center'>
+    <div className='mxsm:flex-row flex w-full flex-col items-center justify-center'>
       {sidebarLinks.map((link, index) => {
         return <SidebarLink key={index} link={link} />;
       })}

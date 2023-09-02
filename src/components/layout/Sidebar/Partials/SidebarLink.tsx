@@ -23,12 +23,12 @@ const SidebarLink: React.FC<ISidebarLinkProps> = ({ link }): JSX.Element => {
       onMouseLeave={() => setIsHovered(false)}
     >
       <div
-        className={`bg-spotify-white absolute left-0 top-0 h-full w-full opacity-10 duration-200 ease-linear ${
+        className={`bg-spotify-white absolute left-0 top-0 h-full w-full duration-200 ease-linear ${
           isHovered ? 'opacity-10' : 'opacity-0'
         }`}
       />
       <div
-        className={`bg-spotify-green absolute left-0 top-0 h-full w-1 duration-200 ease-linear ${
+        className={`bg-spotify-green mxsm:w-full mxsm:h-1 absolute left-0 top-0 h-full w-1 duration-200 ease-linear ${
           isHovered ? 'opacity-100' : 'opacity-0'
         }`}
       />
