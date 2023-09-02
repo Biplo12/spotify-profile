@@ -1,17 +1,14 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-// !STARTERCONF Change these default meta
 const defaultMeta = {
   title: 'Spotify Profile',
   siteName: 'Spotify Profile',
   description:
     'Spotify Profile is a web app that allows you to view your Spotify profile and playlists.',
-  url: 'https://tsnext-tw.thcl.dev',
+  url: 'https://spotify-profile-nu.vercel.app/',
   type: 'website',
   robots: 'follow, index',
-
-  image: 'https://tsnext-tw.thcl.dev/images/large-og.png',
 };
 
 type SeoProps = {
@@ -41,14 +38,10 @@ export default function Seo(props: SeoProps) {
       <meta property='og:site_name' content={meta.siteName} />
       <meta property='og:description' content={meta.description} />
       <meta property='og:title' content={meta.title} />
-      <meta name='image' property='og:image' content={meta.image} />
-      {/* Twitter */}
       <meta name='twitter:card' content='summary_large_image' />
       {/* // !STARTERCONF Remove or change to your handle */}
-      {/* <meta name='twitter:site' content='@th_clarence' /> */}
       <meta name='twitter:title' content={meta.title} />
       <meta name='twitter:description' content={meta.description} />
-      <meta name='twitter:image' content={meta.image} />
       {meta.date && (
         <>
           <meta property='article:published_time' content={meta.date} />
