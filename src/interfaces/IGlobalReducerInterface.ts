@@ -66,4 +66,27 @@ export default interface IGlobalReducerInterface {
     genres: string[];
     popularity: number;
   };
+  trackDetails: {
+    name: string;
+    image: string;
+    artists: {
+      id: string;
+      name: string;
+    }[];
+    album: string;
+    year: number;
+    uri: string;
+    stats: {
+      duration: number;
+      key: string;
+      modality: string;
+      timeSignature: number;
+      tempo: number;
+      popularity: number;
+      bars: number;
+      beats: number;
+      sections: number;
+      segments: number;
+    };
+  };
 }

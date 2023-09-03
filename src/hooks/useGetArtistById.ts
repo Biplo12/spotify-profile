@@ -23,7 +23,7 @@ const useGetArtistById = (id: string) => {
   });
 
   useEffect(() => {
-    const hanldeFetchArtistByRange = async () => {
+    const handleFetchArtistByRange = async () => {
       if (!access_token) return;
       const { data: artist } = await fetchArtistById();
       if (!artist) return;
@@ -37,7 +37,7 @@ const useGetArtistById = (id: string) => {
       };
       dispatch(setArtistDetails(artistData));
     };
-    hanldeFetchArtistByRange();
+    handleFetchArtistByRange();
   }, [dispatch, access_token, fetchArtistById]);
 };
 
