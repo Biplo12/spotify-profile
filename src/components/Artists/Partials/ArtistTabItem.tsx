@@ -28,7 +28,7 @@ const ArtistTabItem: React.FC<IArtistTabItemProps> = ({
     >
       <div className='relative'>
         <img
-          className={`h-40 w-40 duration-150 ease-linear ${
+          className={`h-[200px] w-[200px] duration-150 ease-linear ${
             isHovered.index === index && isHovered.state ? 'opacity-30' : ''
           } rounded-full`}
           onMouseEnter={() => setIsHovered({ state: true, index })}
@@ -47,7 +47,7 @@ const ArtistTabItem: React.FC<IArtistTabItemProps> = ({
           <InfoLabel />
         </div>
       </div>
-      <h1 className='hover:border-spotify-white focus:border-spotify-white border-b border-transparent duration-150 ease-in-out'>
+      <h1 className='hover:border-spotify-green focus:border-spotify-white border-b border-transparent duration-150 ease-in-out'>
         {name}
       </h1>
     </Link>

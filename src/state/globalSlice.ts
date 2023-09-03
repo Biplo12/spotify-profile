@@ -25,6 +25,8 @@ const initialState: IGlobalReducerInterface = {
     medium_term: [],
     long_term: [],
   },
+  recentlyPlayed: [],
+  playlists: [],
 };
 
 const globalSlice = createSlice({
@@ -52,10 +54,24 @@ const globalSlice = createSlice({
     selectTab: (state, action) => {
       state.selectedTab = action.payload;
     },
+    setRecentlyPlayed: (state, action) => {
+      state.recentlyPlayed = action.payload;
+    },
+    setPlaylists: (state, action) => {
+      state.playlists = action.payload;
+    },
   },
 });
 
 const { actions, reducer } = globalSlice;
-export const { selectTab, setAuth, setUser, setArtists, setTracks } = actions;
+export const {
+  selectTab,
+  setAuth,
+  setUser,
+  setArtists,
+  setTracks,
+  setRecentlyPlayed,
+  setPlaylists,
+} = actions;
 export const selectGlobal = (state: RootState) => state.global;
 export default reducer;

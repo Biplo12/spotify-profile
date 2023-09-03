@@ -5,7 +5,8 @@ import { generateRandomString } from '@/lib/helper';
 async function spotifyAuth(req: NextApiRequest, res: NextApiResponse) {
   const { SPOTIFY_CLIENT_ID, SPOTIFY_REDIRECT_URI } = process.env;
   const state = generateRandomString(16);
-  const scope = 'user-top-read user-read-private user-read-email';
+  const scope =
+    'user-top-read user-read-private user-read-email user-read-recently-played';
   res.redirect(
     'https://accounts.spotify.com/authorize?' +
       qs.stringify({

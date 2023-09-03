@@ -25,6 +25,18 @@ export interface ITrack {
   uri: string;
 }
 
+export interface IPlaylist {
+  id: string;
+  name: string;
+  image: string;
+  owner: string;
+  description: string;
+  tracks: {
+    total: number;
+  };
+  uri: string;
+}
+
 export default interface IGlobalReducerInterface {
   isAuth: boolean;
   selectedTab: string;
@@ -45,4 +57,6 @@ export default interface IGlobalReducerInterface {
     medium_term: ITrack[];
     long_term: ITrack[];
   };
+  recentlyPlayed: ITrack[];
+  playlists: IPlaylist[];
 }

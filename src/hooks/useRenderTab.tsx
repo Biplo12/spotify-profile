@@ -1,5 +1,7 @@
 import Artists from '@/components/Artists/Artists';
+import Playlists from '@/components/Playlists/Playlists';
 import Profile from '@/components/Profile/Profile';
+import RecentlyPlayed from '@/components/RecentlyPlayed/RecentlyPlayed';
 import Tracks from '@/components/Tracks/Tracks';
 
 import { useAppSelector } from '@/store/store-hooks';
@@ -14,12 +16,12 @@ const useRenderTab = () => {
         return <Artists />;
       case 'tracks':
         return <Tracks />;
-      case 'playlists':
-        return <div>Playlists</div>;
       case 'recent':
-        return <div>Recent</div>;
+        return <RecentlyPlayed />;
+      case 'playlists':
+        return <Playlists />;
       default:
-        return <div>Profile</div>;
+        return;
     }
   };
   return renderTab();
