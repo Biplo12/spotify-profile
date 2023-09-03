@@ -1,20 +1,20 @@
 import React from 'react';
 
-import useGetUserArtistsByRange from '@/hooks/useGetUserArtistsByRange';
+import useGetUserTracksByRange from '@/hooks/useGetUserTracksByRange';
 
-interface IArtistsTabSortPanelProps {
+interface ITrackTabSortPanelProps {
   setTimeRange: React.Dispatch<React.SetStateAction<string>>;
   timeRange: string;
 }
 
-const ArtistsTabSortPanel: React.FC<IArtistsTabSortPanelProps> = ({
+const TrackTabSortPanel: React.FC<ITrackTabSortPanelProps> = ({
   setTimeRange,
   timeRange,
 }): JSX.Element => {
   const handleTimeRange = (timeRange: string) => {
     setTimeRange(timeRange);
   };
-  useGetUserArtistsByRange(timeRange);
+  useGetUserTracksByRange(timeRange);
 
   const timeRanges = [
     { name: 'All Time', value: 'long_term' },
@@ -24,7 +24,7 @@ const ArtistsTabSortPanel: React.FC<IArtistsTabSortPanelProps> = ({
 
   return (
     <div className='mxsm:justify-center flex w-full flex-wrap items-center justify-between gap-8'>
-      <h1 className='text-center text-2xl font-bold'>Top Artists</h1>
+      <h1 className='text-center text-2xl font-bold'>Top Track</h1>
       <div className='flex items-center justify-center gap-4'>
         {timeRanges.map((timeRangeItem, index) => (
           <button
@@ -43,4 +43,4 @@ const ArtistsTabSortPanel: React.FC<IArtistsTabSortPanelProps> = ({
     </div>
   );
 };
-export default ArtistsTabSortPanel;
+export default TrackTabSortPanel;

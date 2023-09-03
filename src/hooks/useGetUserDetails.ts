@@ -106,7 +106,6 @@ const useGetUserDetails = () => {
   }, [artists, dispatch]);
 
   useEffect(() => {
-    if (!tracks) return;
     const tracksData = tracks?.data?.items?.map((track: ITrack) => ({
       id: track.id,
       name: track.name,
@@ -118,6 +117,7 @@ const useGetUserDetails = () => {
       popularity: track.popularity,
       uri: track.uri,
     }));
+    if (!tracks) return;
     dispatch(
       setTracks({
         data: tracksData,

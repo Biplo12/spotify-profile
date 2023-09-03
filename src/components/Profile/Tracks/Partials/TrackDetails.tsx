@@ -46,7 +46,7 @@ const TrackDetails: React.FC<ITrackDetailsProps> = ({
   }, [name, artists, album]);
 
   const slicedName = name.slice(0, slicedEnd);
-  const slicedAlbumName = album.name.slice(0, slicedEnd);
+  const slicedAlbumName = album?.name.slice(0, slicedEnd);
 
   return (
     <div className='flex flex-col items-start justify-start gap-2'>

@@ -1,5 +1,6 @@
 import Artists from '@/components/Artists/Artists';
 import Profile from '@/components/Profile/Profile';
+import Tracks from '@/components/Tracks/Tracks';
 
 import { useAppSelector } from '@/store/store-hooks';
 
@@ -11,10 +12,10 @@ const useRenderTab = () => {
         return <Profile />;
       case 'artists':
         return <Artists />;
+      case 'tracks':
+        return <Tracks />;
       case 'playlists':
         return <div>Playlists</div>;
-      case 'tracks':
-        return <div>Tracks</div>;
       case 'recent':
         return <div>Recent</div>;
       default:

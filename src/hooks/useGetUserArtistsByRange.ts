@@ -26,8 +26,8 @@ const useGetUserArtistsByRange = (range: string) => {
   const access_token = getFromLocalStorage('access_token');
   const dispatch = useAppDispatch();
   const artistsSelector = useAppSelector((state) => state.global.artists);
-  const { refetch: fetchArtistsByRange, data: artists } = useQuery({
-    queryKey: ['getUserArtists'],
+  const { refetch: fetchArtistsByRange } = useQuery({
+    queryKey: [`getUserArtistsByRange`, range],
     queryFn: async () =>
       await axios.get(
         `https://api.spotify.com/v1/me/top/artists?limit=50&time_range=${range}`,
@@ -41,10 +41,10 @@ const useGetUserArtistsByRange = (range: string) => {
   });
 
   useEffect(() => {
-    if (artistsSelector?.[range as keyof typeof artistsSelector]?.length)
-      return;
-    fetchArtistsByRange();
-    if (artists) {
+    const hanldeFetchArtistsByRange = async () => {
+      if (artistsSelector?.[range as keyof typeof artistsSelector]?.length > 0)
+        return;
+      const { data: artists } = await fetchArtistsByRange();
       if (!artists) return;
       const artistsData = artists?.data?.items?.map((artist: IArtist) => ({
         id: artist.id,
@@ -60,8 +60,9 @@ const useGetUserArtistsByRange = (range: string) => {
           range,
         })
       );
-    }
-  }, [dispatch, fetchArtistsByRange, range]);
+    };
+    hanldeFetchArtistsByRange();
+  }, [dispatch, artistsSelector, fetchArtistsByRange, range]);
 };
 
 export default useGetUserArtistsByRange;
