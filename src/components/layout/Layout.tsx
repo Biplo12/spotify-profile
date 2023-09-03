@@ -2,11 +2,13 @@ import * as React from 'react';
 
 import Sidebar from '@/components/layout/Sidebar/Sidebar';
 
+import { useAppSelector } from '@/store/store-hooks';
+
 export default function Layout({ children }: { children: React.ReactNode }) {
-  // Put Header or Footer Here
+  const isAuth = useAppSelector((state) => state.global.isAuth);
   return (
     <>
-      <Sidebar />
+      {isAuth && <Sidebar />}
       {children}
     </>
   );

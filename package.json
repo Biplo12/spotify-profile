@@ -18,13 +18,19 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.5",
+    "@tanstack/react-query": "^4.33.0",
+    "@types/qs": "^6.9.8",
     "@vetixy/circular-std": "^1.0.0",
+    "axios": "^1.5.0",
     "clsx": "^1.2.1",
     "lucide-react": "^0.260.0",
     "next": "^13.4.10",
+    "qs": "^6.11.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
+    "react-redux": "^8.1.2",
     "tailwind-merge": "^1.13.2"
   },
   "devDependencies": {

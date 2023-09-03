@@ -13,27 +13,22 @@ const SidebarLinks: React.FC = (): JSX.Element => {
     {
       icon: <UserIcon />,
       text: 'Profile',
-      link: '/profile',
     },
     {
       icon: <MicIcon />,
       text: 'Artists',
-      link: '/artists',
     },
     {
       icon: <NoteIcon />,
       text: 'Songs',
-      link: '/songs',
     },
     {
       icon: <RecentIcon />,
       text: 'Recent',
-      link: '/recent',
     },
     {
       icon: <PlaylistIcon />,
       text: 'Playlists',
-      link: '/playlists',
     },
   ];
   return (
