@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 
 import { useAppDispatch, useAppSelector } from '@/store/store-hooks';
@@ -17,10 +18,14 @@ interface CustomCSSProperties extends React.CSSProperties {
 
 const SidebarLink: React.FC<ISidebarLinkProps> = ({ link }): JSX.Element => {
   const [isHovered, setIsHovered] = useState<boolean>(false);
+  const router = useRouter();
   const selectedTab = useAppSelector((state) => state.global.selectedTab);
   const isSelected = selectedTab === link.text.toLowerCase();
   const dispatch = useAppDispatch();
   const handleSelectTab = () => {
+    if (router.pathname !== '/') {
+      router.push('/');
+    }
     dispatch(selectTab(link.text.toLowerCase()));
   };
   return (

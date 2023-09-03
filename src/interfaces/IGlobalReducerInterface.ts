@@ -59,4 +59,11 @@ export default interface IGlobalReducerInterface {
   };
   recentlyPlayed: ITrack[];
   playlists: IPlaylist[];
+  artistDetails: {
+    name: string;
+    image: string;
+    followers: number;
+    genres: string[];
+    popularity: number;
+  };
 }
