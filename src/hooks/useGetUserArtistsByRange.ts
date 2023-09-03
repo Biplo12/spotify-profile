@@ -44,6 +44,7 @@ const useGetUserArtistsByRange = (range: string) => {
     const hanldeFetchArtistsByRange = async () => {
       if (artistsSelector?.[range as keyof typeof artistsSelector]?.length > 0)
         return;
+      if (!access_token) return;
       const { data: artists } = await fetchArtistsByRange();
       if (!artists) return;
       const artistsData = artists?.data?.items?.map((artist: IArtist) => ({
@@ -62,7 +63,7 @@ const useGetUserArtistsByRange = (range: string) => {
       );
     };
     hanldeFetchArtistsByRange();
-  }, [dispatch, artistsSelector, fetchArtistsByRange, range]);
+  }, [dispatch, artistsSelector, fetchArtistsByRange, range, access_token]);
 };
 
 export default useGetUserArtistsByRange;

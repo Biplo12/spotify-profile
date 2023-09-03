@@ -8,10 +8,13 @@ import Auth from '@/components/Auth/Auth';
 import Layout from '@/components/layout/Layout';
 import Seo from '@/components/Seo';
 
+import { useAppSelector } from '@/store/store-hooks';
+
 export default function HomePage() {
-  const isAuth = useCheckAuthState();
-  const renderedTab = useRenderTab();
+  useCheckAuthState();
   useGetUserDetails();
+  const isAuth = useAppSelector((state) => state.global.isAuth);
+  const renderedTab = useRenderTab();
   return (
     <Layout>
       <Seo />

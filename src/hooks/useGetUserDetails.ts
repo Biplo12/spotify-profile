@@ -64,6 +64,7 @@ const useGetUserDetails = () => {
           Authorization: `Bearer ${access_token}`,
         },
       }),
+    enabled: !!access_token,
   });
   const { data: artists } = useQuery({
     queryKey: ['getUserArtists'],
@@ -76,6 +77,7 @@ const useGetUserDetails = () => {
           },
         }
       ),
+    enabled: !!access_token,
   });
   const { data: tracks } = useQuery({
     queryKey: ['getUserTracks'],
@@ -88,8 +90,10 @@ const useGetUserDetails = () => {
           },
         }
       ),
+    enabled: !!access_token,
   });
   useEffect(() => {
+    if (!access_token) return;
     if (!playlists) return;
     const playlistsData = playlists?.data?.items?.map(
       (playlist: IPlaylist) => ({
@@ -103,9 +107,10 @@ const useGetUserDetails = () => {
       })
     );
     dispatch(setPlaylists(playlistsData));
-  }, [playlists, dispatch]);
+  }, [playlists, dispatch, access_token]);
 
   useEffect(() => {
+    if (!access_token) return;
     if (!artists) return;
     const artistsData = artists?.data?.items?.map((artist: IArtist) => ({
       id: artist.id,
@@ -121,9 +126,10 @@ const useGetUserDetails = () => {
         range: 'long_term',
       })
     );
-  }, [artists, dispatch]);
+  }, [artists, dispatch, access_token]);
 
   useEffect(() => {
+    if (!access_token) return;
     const tracksData = tracks?.data?.items?.map((track: ITrack) => ({
       id: track.id,
       name: track.name,
@@ -142,7 +148,7 @@ const useGetUserDetails = () => {
         range: 'long_term',
       })
     );
-  }, [tracks, dispatch]);
+  }, [tracks, dispatch, access_token]);
 };
 
 export default useGetUserDetails;

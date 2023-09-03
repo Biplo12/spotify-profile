@@ -48,6 +48,7 @@ const useGetRecentlyPlayed = () => {
   useEffect(() => {
     const hanldeFetchRecentlyPlayed = async () => {
       if (selectedTab.toLocaleLowerCase() !== 'recent') return;
+      if (!access_token) return;
       const { data: recentlyPlayed } = await fetchRecentlyPlayed();
       if (!recentlyPlayed) return;
       const recentlyPlayedData = recentlyPlayed?.data?.items?.map(
@@ -66,7 +67,7 @@ const useGetRecentlyPlayed = () => {
       dispatch(setRecentlyPlayed(recentlyPlayedData));
     };
     hanldeFetchRecentlyPlayed();
-  }, [dispatch, fetchRecentlyPlayed, selectedTab]);
+  }, [dispatch, fetchRecentlyPlayed, selectedTab, access_token]);
 };
 
 export default useGetRecentlyPlayed;

@@ -47,6 +47,7 @@ const useGetUserTracksByRange = (range: string) => {
     const hanldeFetchTracksByRange = async () => {
       if (tracksSelector?.[range as keyof typeof tracksSelector]?.length > 0)
         return;
+      if (!access_token) return;
       const { data: tracks } = await fetchTracksByRange();
       if (!tracks) return;
       const tracksData = tracks?.data?.items?.map((track: ITrack) => ({
@@ -68,7 +69,14 @@ const useGetUserTracksByRange = (range: string) => {
       );
     };
     hanldeFetchTracksByRange();
-  }, [dispatch, fetchTracksByRange, range, tracks, tracksSelector]);
+  }, [
+    dispatch,
+    fetchTracksByRange,
+    range,
+    tracks,
+    tracksSelector,
+    access_token,
+  ]);
 };
 
 export default useGetUserTracksByRange;
