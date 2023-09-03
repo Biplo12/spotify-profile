@@ -20,7 +20,7 @@ const SidebarLinks: React.FC = (): JSX.Element => {
     },
     {
       icon: <NoteIcon />,
-      text: 'Songs',
+      text: 'Tracks',
     },
     {
       icon: <RecentIcon />,

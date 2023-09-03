@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from '@/store/store-hooks';
 import { setArtists, setTracks, setUser } from '@/state/globalSlice';
 
 interface IArtist {
+  id: string;
   name: string;
   images: {
     url: string;
@@ -21,6 +22,7 @@ interface IArtist {
 }
 
 interface ITrack {
+  id: string;
   name: string;
   album: {
     images: {
@@ -88,27 +90,40 @@ const useGetUserDetails = () => {
   useEffect(() => {
     if (!artists) return;
     const artistsData = artists?.data?.items?.map((artist: IArtist) => ({
+      id: artist.id,
       name: artist.name,
       image: artist.images?.[0]?.url,
       followers: artist.followers.total,
       popularity: artist.popularity,
       genres: artist.genres,
     }));
-    dispatch(setArtists(artistsData));
+    dispatch(
+      setArtists({
+        data: artistsData,
+        range: 'long_term',
+      })
+    );
   }, [artists, dispatch]);
 
   useEffect(() => {
     if (!tracks) return;
     const tracksData = tracks?.data?.items?.map((track: ITrack) => ({
+      id: track.id,
       name: track.name,
       image: track.album.images?.[0]?.url,
       artists: track.artists,
+      album: track.album,
       duration: track.duration_ms,
       explicit: track.explicit,
       popularity: track.popularity,
       uri: track.uri,
     }));
-    dispatch(setTracks(tracksData));
+    dispatch(
+      setTracks({
+        data: tracksData,
+        range: 'long_term',
+      })
+    );
   }, [tracks, dispatch]);
 };
 

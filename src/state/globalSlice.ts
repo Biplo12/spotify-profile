@@ -1,8 +1,9 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { RootState } from '@/store/store';
 
 import { IGlobalReducerInterface } from '@/interfaces';
+import { IArtist, ITrack } from '@/interfaces/IGlobalReducerInterface';
 
 const initialState: IGlobalReducerInterface = {
   isAuth: false,
@@ -14,8 +15,16 @@ const initialState: IGlobalReducerInterface = {
     following: 0,
     playlists: 0,
   },
-  artists: [],
-  tracks: [],
+  artists: {
+    short_term: [],
+    medium_term: [],
+    long_term: [],
+  },
+  tracks: {
+    short_term: [],
+    medium_term: [],
+    long_term: [],
+  },
 };
 
 const globalSlice = createSlice({
@@ -28,11 +37,17 @@ const globalSlice = createSlice({
     setUser: (state, action) => {
       state.user = action.payload;
     },
-    setArtists: (state, action) => {
-      state.artists = action.payload;
+    setArtists: (
+      state,
+      action: PayloadAction<{ data: IArtist[]; range: string }>
+    ) => {
+      state.artists[action.payload.range as 'long_term'] = action.payload.data;
     },
-    setTracks: (state, action) => {
-      state.tracks = action.payload;
+    setTracks: (
+      state,
+      action: PayloadAction<{ data: ITrack[]; range: string }>
+    ) => {
+      state.tracks[action.payload.range as 'long_term'] = action.payload.data;
     },
     selectTab: (state, action) => {
       state.selectedTab = action.payload;

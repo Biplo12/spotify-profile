@@ -1,4 +1,5 @@
 export interface IArtist {
+  id: string;
   name: string;
   image: string;
   followers: number;
@@ -7,9 +8,17 @@ export interface IArtist {
 }
 
 export interface ITrack {
+  id: string;
   name: string;
   image: string;
-  artists: string[];
+  artists: {
+    id: string;
+    name: string;
+  }[];
+  album: {
+    id: string;
+    name: string;
+  };
   duration: number;
   explicit: boolean;
   popularity: number;
@@ -26,6 +35,14 @@ export default interface IGlobalReducerInterface {
     following: number;
     playlists: number;
   };
-  artists: IArtist[];
-  tracks: ITrack[];
+  artists: {
+    short_term: IArtist[];
+    medium_term: IArtist[];
+    long_term: IArtist[];
+  };
+  tracks: {
+    short_term: ITrack[];
+    medium_term: ITrack[];
+    long_term: ITrack[];
+  };
 }
