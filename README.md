@@ -1,122 +1,75 @@
-# Next.js + Tailwind CSS + TypeScript Starter and Boilerplate
+# Spotify Profile Summary Documentation
 
-<div align="center">
-  <h2>🔋 ts-nextjs-tailwind-starter</h2>
-  <p>Next.js + Tailwind CSS + TypeScript starter packed with useful development features.</p>
-  <p>Made by <a href="https://theodorusclarence.com">Theodorus Clarence</a></p>
+## Introduction
 
-[![GitHub Repo stars](https://img.shields.io/github/stars/theodorusclarence/ts-nextjs-tailwind-starter)](https://github.com/theodorusclarence/ts-nextjs-tailwind-starter/stargazers)
-[![Depfu](https://badges.depfu.com/badges/fc6e730632ab9dacaf7df478a08684a7/overview.svg)](https://depfu.com/github/theodorusclarence/ts-nextjs-tailwind-starter?project_id=30160)
-[![Last Update](https://img.shields.io/badge/deps%20update-every%20sunday-blue.svg)](https://shields.io/)
-
-</div>
+Welcome to the documentation for **Spotify Profile**, a project heavily inspired by Brittany Chiang. This project provides users with a comprehensive summary of their Spotify profile, including user details, top artists, and top tracks. It is built using Next.js, Tailwind CSS, the Spotify Web API, and TypeScript.
 
 ## Features
 
-This repository is 🔋 battery packed with:
+### 1. Profile Summary
 
-- ⚡️ Next.js 13
-- ⚛️ React 18
-- ✨ TypeScript
-- 💨 Tailwind CSS 3 — Configured with CSS Variables to extend the **primary** color
-- 💎 Pre-built Components — Components that will **automatically adapt** with your brand color, [check here for the demo](https://tsnext-tw.thcl.dev/components)
-- 🃏 Jest — Configured for unit testing
-- 📈 Absolute Import and Path Alias — Import components using `@/` prefix
-- 📏 ESLint — Find and fix problems in your code, also will **auto sort** your imports
-- 💖 Prettier — Format your code consistently
-- 🐶 Husky & Lint Staged — Run scripts on your staged files before they are committed
-- 🤖 Conventional Commit Lint — Make sure you & your teammates follow conventional commit
-- ⏰ Release Please — Generate your changelog by activating the `release-please` workflow
-- 👷 Github Actions — Lint your code on PR
-- 🚘 Automatic Branch and Issue Autolink — Branch will be automatically created on issue **assign**, and auto linked on PR
-- 🔥 Snippets — A collection of useful snippets
-- 👀 Default Open Graph — Awesome open graph generated using [og](https://github.com/theodorusclarence/og), fork it and deploy!
-- 🗺 Site Map — Automatically generate sitemap.xml
-- 📦 Expansion Pack — Easily install common libraries, additional components, and configs
+The profile summary provides users with an overview of their Spotify profile, including their user details, top artists, and top tracks.
 
-See the 👉 [feature details and changelog](https://github.com/theodorusclarence/ts-nextjs-tailwind-starter/blob/main/CHANGELOG.md) 👈 for more.
+- **User Details**: Users can view their Spotify username, profile picture, and other relevant information.
+- **Top Artists**: This section displays the user's top artists, showcasing their musical preferences.
+- **Top Tracks**: Users can see a list of their most listened-to tracks.
 
-You can also check all of the **details and demos** on my blog post:
+### 2. Artists Tab
 
-- [One-stop Starter to Maximize Efficiency on Next.js & Tailwind CSS Projects](https://theodorusclarence.com/blog/one-stop-starter)
+In the Artists tab, users can explore their top artists in more detail. They can filter the artists by:
+
+- **All Time**: View top artists based on their all-time listening history.
+- **Last 6 Months**: See top artists from the last six months.
+- **Last 4 Weeks**: Explore the top artists from the past four weeks.
+
+Upon clicking on an artist, users are directed to a dedicated artist statistics page, where they can find more information about the selected artist.
+
+### 3. Tracks Tab
+
+The Tracks tab allows users to delve into their top tracks. Like the Artists tab, they can filter tracks by:
+
+- **All Time**: Access top tracks from all-time listening history.
+- **Last 6 Months**: See top tracks from the last six months.
+- **Last 4 Weeks**: Explore top tracks from the past four weeks.
+
+Clicking on a specific track will lead users to a detailed track statistics page, where they can learn more about the track.
+
+### 4. Recent Tab
+
+The Recent tab displays the most recent tracks that the user has listened to on Spotify. This gives users an insight into their current listening habits and preferences.
+
+### 5. Playlist Tab
+
+In the Playlist tab, users can access their Spotify playlists. Upon clicking on a specific playlist, they can view all the tracks contained within it. Additionally, users have the following options:
+
+- **Get Recommendations**: Users can receive track recommendations based on the selected playlist.
+- **Save to Spotify**: From the recommended tracks, users can save their favorite songs directly to their Spotify account.
+
+## Technology Stack
+
+The Spotify Profile project leverages the following technologies:
+
+- **Next.js**: A React framework for building server-rendered React applications.
+- **Tailwind CSS**: A utility-first CSS framework for designing user interfaces.
+- **Spotify Web API**: The official API provided by Spotify for accessing user-specific music data.
+- **TypeScript**: A statically typed superset of JavaScript, enhancing code quality and maintainability.
 
 ## Getting Started
 
-### 1. Clone this template using one of the three ways:
+To run the Spotify Profile project locally, follow these steps:
 
-1. Use this repository as template
-
-   **Disclosure:** by using this repository as a template, there will be an attribution on your repository.
-
-   I'll appreciate if you do, so this template can be known by others too 😄
-
-   ![Use as template](https://user-images.githubusercontent.com/55318172/129183039-1a61e68d-dd90-4548-9489-7b3ccbb35810.png)
-
-2. Using `create-next-app`
-
-   ```bash
-   npx create-next-app -e https://github.com/theodorusclarence/ts-nextjs-tailwind-starter project-name
-   ```
-
-3. Using `degit`
-
-   ```bash
-   npx degit theodorusclarence/ts-nextjs-tailwind-starter YOUR_APP_NAME
-   ```
-
-4. Deploy to Vercel
-
-   [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Ftheodorusclarence%2Fts-nextjs-tailwind-starter)
-
-### 2. Install dependencies
-
-It is encouraged to use **yarn** so the husky hooks can work properly.
+1. Clone the GitHub repository: [github.com/Biplo12/spotify-profile](https://github.com/Biplo12/spotify-profile.git).
+2. Install the necessary dependencies using npm or yarn.
+3. Configure your Spotify API credentials by creating a Spotify Developer App and adding the required credentials to the project.
+4. Start the development server.
 
 ```bash
-yarn install
+npm install
+npm run dev
 ```
 
-### 3. Run the development server
+## Conclusion
 
-You can start the server using this command:
+Spotify Profile is an exciting project that allows users to explore their Spotify listening history in a visually appealing and informative way. Whether you want to discover your top artists, tracks, or playlists, this application provides a user-friendly experience for Spotify enthusiasts. Enjoy exploring your music profile!
 
-```bash
-yarn dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. You can start editing the page by modifying `src/pages/index.tsx`.
-
-### 4. Change defaults
-
-There are some things you need to change including title, urls, favicons, etc.
-
-Find all comments with !STARTERCONF, then follow the guide.
-
-Don't forget to change the package name in package.json
-
-### 5. Commit Message Convention
-
-This starter is using [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/), it is mandatory to use it to commit changes.
-
-## Projects using ts-nextjs-tailwind-starter
-
-<!--
-TEMPLATE
-- [sitename](https://sitelink.com) ([Source](https://github.com/githublink))
-- [sitename](https://sitelink.com)
--->
-
-- [theodorusclarence.com](https://theodorusclarence.com) ([Source](https://github.com/theodorusclarence/theodorusclarence.com))
-- [Notiolink](https://notiolink.thcl.dev/) ([Source](https://github.com/theodorusclarence/notiolink))
-
-Are you using this starter? Please add your page (and repo) to the end of the list via a [Pull Request](https://github.com/theodorusclarence/ts-nextjs-tailwind-starter/edit/main/README.md). 😃
-
-## Expansion Pack 📦
-
-This starter is now equipped with an [expansion pack](https://github.com/theodorusclarence/expansion-pack).
-
-You can easily add expansion such as React Hook Form + Components, Storybook, and more just using a single command line.
-
-https://user-images.githubusercontent.com/55318172/146631994-e1cac137-1664-4cfe-950b-a96decc1eaa6.mp4
-
-Check out the [expansion pack repository](https://github.com/theodorusclarence/expansion-pack) for the commands
+For any questions or issues, please refer to the project's GitHub repository or contact the project maintainers.
