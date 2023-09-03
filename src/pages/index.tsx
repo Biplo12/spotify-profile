@@ -15,7 +15,7 @@ export default function HomePage() {
   return (
     <Layout>
       <Seo />
-      <main className='bg-spotify-grey text-spotify-white mxsm:pb-[10rem] mxsm:px-[3.5rem] mxsm:py-12 flex min-h-screen flex-col items-center justify-center py-24 pl-[10rem] pr-[3.5rem]'>
+      <main className='bg-spotify-grey text-spotify-white mxsm:pb-[10rem] mxsm:px-[3.5rem] mxsm:py-12 flex min-h-screen flex-col items-center justify-center pl-[10rem] pr-[3.5rem] pt-24'>
         {!isAuth && <Auth />}
         {isAuth && renderedTab}
       </main>

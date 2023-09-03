@@ -3,6 +3,9 @@ import React from 'react';
 import { useAppSelector } from '@/store/store-hooks';
 const UserStats: React.FC = (): JSX.Element => {
   const user = useAppSelector((state) => state.global.user);
+  const playlistsNumber = useAppSelector(
+    (state) => state.global.playlists
+  )?.length;
   const stats = [
     {
       name: 'Followers',
@@ -14,7 +17,7 @@ const UserStats: React.FC = (): JSX.Element => {
     },
     {
       name: 'Playlists',
-      value: user?.playlists,
+      value: playlistsNumber,
     },
   ];
   return (

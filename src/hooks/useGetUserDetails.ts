@@ -4,9 +4,9 @@ import { useEffect } from 'react';
 
 import { getFromLocalStorage } from '@/lib/helper';
 
-import { useAppDispatch, useAppSelector } from '@/store/store-hooks';
+import { useAppDispatch } from '@/store/store-hooks';
 
-import { setArtists, setTracks, setUser } from '@/state/globalSlice';
+import { setArtists, setPlaylists, setTracks } from '@/state/globalSlice';
 
 interface IArtist {
   id: string;
@@ -37,11 +37,25 @@ interface ITrack {
   popularity: number;
   uri: string;
 }
+interface IPlaylist {
+  id: string;
+  name: string;
+  images: {
+    url: string;
+  }[];
+  owner: {
+    display_name: string;
+  };
+  description: string;
+  tracks: {
+    total: number;
+  };
+  uri: string;
+}
 
 const useGetUserDetails = () => {
   const access_token = getFromLocalStorage('access_token');
   const dispatch = useAppDispatch();
-  const user = useAppSelector((state) => state.global.user);
   const { data: playlists } = useQuery({
     queryKey: ['getUserPlaylists'],
     queryFn: async () =>
@@ -77,14 +91,18 @@ const useGetUserDetails = () => {
   });
   useEffect(() => {
     if (!playlists) return;
-    dispatch(
-      setUser({
-        ...user,
-        playlists: playlists?.data?.items?.length,
+    const playlistsData = playlists?.data?.items?.map(
+      (playlist: IPlaylist) => ({
+        id: playlist.id,
+        name: playlist.name,
+        image: playlist.images?.[0]?.url,
+        description: playlist.description,
+        owner: playlist.owner,
+        tracks: playlist.tracks,
+        uri: playlist.uri,
       })
     );
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    dispatch(setPlaylists(playlistsData));
   }, [playlists, dispatch]);
 
   useEffect(() => {
