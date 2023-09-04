@@ -23,10 +23,20 @@ const useGetTrackById = (id: string) => {
       }),
     enabled: !!access_token && !!id,
   });
-  const { refetch: fetchTrackStatsById } = useQuery({
-    queryKey: ['getTrackStatsId', id],
+  const { refetch: fetchTrackFeaturesById } = useQuery({
+    queryKey: ['getTrackFeaturesId', id],
     queryFn: async () =>
       await axios.get(`https://api.spotify.com/v1/audio-features/${id}`, {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+        },
+      }),
+    enabled: !!access_token && !!id,
+  });
+  const { refetch: fetchTrackAnalysisById } = useQuery({
+    queryKey: ['getTrackFeaturesId', id],
+    queryFn: async () =>
+      await axios.get(`https://api.spotify.com/v1/audio-analysis/${id}`, {
         headers: {
           Authorization: `Bearer ${access_token}`,
         },
@@ -37,7 +47,9 @@ const useGetTrackById = (id: string) => {
   const handleFetchTrackById = async () => {
     if (!access_token) return;
     const { data: track } = await fetchTrackById();
-    if (!track) return;
+    const { data: trackFeatures } = await fetchTrackFeaturesById();
+    const { data: trackAnalysis } = await fetchTrackAnalysisById();
+    if (!trackFeatures || !track || !trackAnalysis) return;
     const trackDetails = track?.data;
     const trackData = {
       name: trackDetails.name,
@@ -55,26 +67,25 @@ const useGetTrackById = (id: string) => {
       uri: trackDetails.uri,
     };
 
-    const { data: trackStats } = await fetchTrackStatsById();
-    if (!trackStats) return;
-    const trackStatsDetails = trackStats?.data;
-    const trackStatsData = {
-      duration: trackStatsDetails.duration_ms,
-      key: trackStatsDetails.key,
-      modality: trackStatsDetails.mode,
-      timeSignature: trackStatsDetails.time_signature,
-      tempo: trackStatsDetails.tempo,
-      popularity: trackStatsDetails.popularity,
-      bars: trackStatsDetails.bars,
-      beats: trackStatsDetails.beats,
-      sections: trackStatsDetails.sections,
-      segments: trackStatsDetails.segments,
+    const trackFeaturesDetails = trackFeatures?.data;
+    const trackAnalysisDetails = trackAnalysis?.data;
+    const trackFeaturesData = {
+      duration: trackFeaturesDetails.duration_ms,
+      key: trackFeaturesDetails.key,
+      modality: trackFeaturesDetails.mode,
+      timeSignature: trackFeaturesDetails.time_signature,
+      tempo: trackFeaturesDetails.tempo,
+      popularity: trackDetails.popularity,
+      bars: trackAnalysisDetails.bars.length,
+      beats: trackAnalysisDetails.beats.length,
+      sections: trackAnalysisDetails.sections.length,
+      segments: trackAnalysisDetails.segments.length,
     };
 
     dispatch(
       setTrackDetails({
         ...trackData,
-        stats: trackStatsData,
+        stats: trackFeaturesData,
       })
     );
   };
