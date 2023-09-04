@@ -65,6 +65,37 @@ export interface IPlaylist {
   uri: string;
 }
 
+export interface IPlaylistDetails {
+  id: string;
+  name: string;
+  image: string;
+  description: string;
+  owner: string;
+  followers: number;
+  tracks: {
+    total: number;
+    items: {
+      track: {
+        id: string;
+        name: string;
+        image: string;
+        artists: {
+          id: string;
+          name: string;
+        }[];
+        album: {
+          id: string;
+          name: string;
+        };
+        duration: number;
+        explicit: boolean;
+        popularity: number;
+        uri: string;
+      };
+    }[];
+  };
+}
+
 export default interface IGlobalReducerInterface {
   isAuth: boolean;
   selectedTab: string;
@@ -89,4 +120,5 @@ export default interface IGlobalReducerInterface {
   playlists: IPlaylist[];
   artistDetails: IArtist;
   trackDetails: ITrackDetails;
+  playlistDetails: IPlaylistDetails;
 }

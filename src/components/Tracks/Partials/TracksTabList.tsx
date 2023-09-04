@@ -12,7 +12,7 @@ const TracksTabList: React.FC<ITracksTabListProps> = ({
   tracks,
 }): JSX.Element => {
   return (
-    <div className='flex min-h-screen w-full flex-col items-center gap-8'>
+    <div className='flex min-h-[90vh] w-full flex-col items-center gap-8'>
       {tracks?.map((track, index) => (
         <TrackItem key={index} track={track} index={index} />
       ))}

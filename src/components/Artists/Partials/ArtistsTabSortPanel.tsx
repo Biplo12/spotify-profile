@@ -34,7 +34,7 @@ const ArtistsTabSortPanel: React.FC<IArtistsTabSortPanelProps> = ({
               timeRange === timeRangeItem.value
                 ? ' border-spotify-white opacity-100'
                 : 'border-transparent opacity-50'
-            } duration-300 ease-in-out hover:opacity-100 focus:opacity-100`}
+            } mxsm:text-sm duration-300 ease-in-out hover:opacity-100 focus:opacity-100`}
           >
             {timeRangeItem.name}
           </button>

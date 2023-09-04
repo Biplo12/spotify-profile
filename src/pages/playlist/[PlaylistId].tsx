@@ -3,30 +3,30 @@ import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 
 import useCheckAuthState from '@/hooks/useCheckAuthState';
-import useGetArtistById from '@/hooks/useGetArtistById';
+import useGetPlaylistById from '@/hooks/useGetPlaylistById';
 
-import ArtistDetails from '@/components/ArtistDetails/ArtistDetails';
 import Auth from '@/components/Auth/Auth';
 import Layout from '@/components/layout/Layout';
+import PlaylistDetails from '@/components/PlaylistDetails/PlaylistDetails';
 import Seo from '@/components/Seo';
 
 import { useAppDispatch, useAppSelector } from '@/store/store-hooks';
 
 import { selectTab } from '@/state/globalSlice';
-const ArtistDetailsPage: React.FC = (): JSX.Element => {
+const PlaylistDetailsPage: React.FC = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const router = useRouter();
   useCheckAuthState();
-  const { ArtistId } = router.query;
-  const handleFetchArtistById = useGetArtistById(ArtistId as string);
+  const { PlaylistId } = router.query;
+  const handleFetchPlaylistById = useGetPlaylistById(PlaylistId as string);
   const isAuth = useAppSelector((state) => state.global.isAuth);
-  const artist = useAppSelector((state) => state.global.artistDetails);
+  const playlist = useAppSelector((state) => state.global.playlistDetails);
 
   useEffect(() => {
-    if (ArtistId) {
-      handleFetchArtistById();
+    if (PlaylistId) {
+      handleFetchPlaylistById();
     }
-  }, [ArtistId]);
+  }, [PlaylistId]);
 
   useEffect(() => {
     dispatch(selectTab(''));
@@ -37,14 +37,14 @@ const ArtistDetailsPage: React.FC = (): JSX.Element => {
       <main
         className={`bg-spotify-grey text-spotify-white flex min-h-screen flex-col items-center justify-center ${
           isAuth
-            ? 'mxsm:pb-[10rem] mxsm:px-[2rem] mxsm:py-12 pl-[10rem] pr-[3.5rem] pt-24'
+            ? 'mxsm:pb-[10rem] mxsm:px-[2rem] mxsm:py-12 pb-12 pl-[10rem] pr-[3.5rem] pt-24'
             : ''
         }`}
       >
         {!isAuth && <Auth />}
-        {isAuth && artist && <ArtistDetails />}
+        {isAuth && playlist && <PlaylistDetails />}
       </main>
     </Layout>
   );
 };
-export default ArtistDetailsPage;
+export default PlaylistDetailsPage;

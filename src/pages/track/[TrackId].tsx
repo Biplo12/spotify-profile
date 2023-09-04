@@ -38,7 +38,7 @@ const TrackDetailsPage: React.FC = (): JSX.Element => {
       <main
         className={`bg-spotify-grey text-spotify-white flex min-h-screen flex-col items-center justify-center ${
           isAuth
-            ? 'mxsm:pb-[10rem] mxsm:px-[2rem] mxsm:py-12 pl-[10rem] pr-[3.5rem] pt-24'
+            ? 'mxsm:pb-[10rem] mxsm:px-[2rem] mxsm:py-12 pb-12 pl-[10rem] pr-[3.5rem] pt-24'
             : ''
         }`}
       >

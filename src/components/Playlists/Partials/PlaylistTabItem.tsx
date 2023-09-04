@@ -21,7 +21,9 @@ const PlaylistTabItem: React.FC<IPlaylistTabItemProps> = ({
         alt={playlist.name}
         className='h-full w-full transition-all duration-150 ease-linear hover:opacity-25'
       />
-      <h1 className='text-sm font-bold text-white'>{playlist.name}</h1>
+      <h1 className='text-center text-sm font-bold text-white'>
+        {playlist.name}
+      </h1>
       <div className='flex items-center justify-center gap-1 opacity-75'>
         <span className='text-xs uppercase tracking-[2px] opacity-75'>
           {playlist.tracks.total}
