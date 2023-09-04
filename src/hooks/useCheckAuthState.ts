@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { useEffect } from 'react';
@@ -12,6 +13,7 @@ const useCheckAuthState = () => {
   const access_token = getFromLocalStorage('access_token');
   const dispatch = useAppDispatch();
   const user = useAppSelector((state) => state.global.user);
+  const isAuth = useAppSelector((state) => state.global.isAuth);
   const { refetch: chechAuthState } = useQuery({
     queryKey: ['checkAuthState'],
     queryFn: async () =>
@@ -25,7 +27,7 @@ const useCheckAuthState = () => {
 
   useEffect(() => {
     const handleCheckAuthState = async () => {
-      if (access_token) {
+      if (access_token && !isAuth) {
         const { data } = await chechAuthState();
         if (data) {
           dispatch(
@@ -41,7 +43,6 @@ const useCheckAuthState = () => {
       }
     };
     handleCheckAuthState();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [access_token, chechAuthState, dispatch]);
 };
 

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 
@@ -13,13 +14,19 @@ import { useAppDispatch, useAppSelector } from '@/store/store-hooks';
 
 import { selectTab } from '@/state/globalSlice';
 const ArtistDetailsPage: React.FC = (): JSX.Element => {
-  const router = useRouter();
   const dispatch = useAppDispatch();
-  const { ArtistId } = router.query;
-  useGetArtistById(ArtistId as string);
+  const router = useRouter();
   useCheckAuthState();
+  const { ArtistId } = router.query;
+  const handleFetchArtistById = useGetArtistById(ArtistId as string);
   const isAuth = useAppSelector((state) => state.global.isAuth);
   const artist = useAppSelector((state) => state.global.artistDetails);
+
+  useEffect(() => {
+    if (ArtistId) {
+      handleFetchArtistById();
+    }
+  }, [ArtistId]);
 
   useEffect(() => {
     dispatch(selectTab(''));
@@ -35,7 +42,7 @@ const ArtistDetailsPage: React.FC = (): JSX.Element => {
         }`}
       >
         {!isAuth && <Auth />}
-        {isAuth && artist && <ArtistDetails artist={artist} />}
+        {isAuth && artist && <ArtistDetails />}
       </main>
     </Layout>
   );

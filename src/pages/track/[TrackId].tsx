@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 
@@ -7,22 +8,30 @@ import useGetTrackById from '@/hooks/useGetTrackById';
 import Auth from '@/components/Auth/Auth';
 import Layout from '@/components/layout/Layout';
 import Seo from '@/components/Seo';
+import TrackDetails from '@/components/TrackDetails/TrackDetials';
 
 import { useAppDispatch, useAppSelector } from '@/store/store-hooks';
 
 import { selectTab } from '@/state/globalSlice';
 const TrackDetailsPage: React.FC = (): JSX.Element => {
-  const router = useRouter();
   const dispatch = useAppDispatch();
-  const { TrackId } = router.query;
-  useGetTrackById(TrackId as string);
+  const router = useRouter();
   useCheckAuthState();
+  const { TrackId } = router.query;
+  const handleFetchTrackById = useGetTrackById(TrackId as string);
   const isAuth = useAppSelector((state) => state.global.isAuth);
-  // const track = useAppSelector((state) => state.global.trackDetails);
+  const track = useAppSelector((state) => state.global.trackDetails);
+
+  useEffect(() => {
+    if (TrackId) {
+      handleFetchTrackById();
+    }
+  }, [TrackId]);
 
   useEffect(() => {
     dispatch(selectTab(''));
   }, [dispatch]);
+
   return (
     <Layout>
       <Seo />
@@ -34,7 +43,7 @@ const TrackDetailsPage: React.FC = (): JSX.Element => {
         }`}
       >
         {!isAuth && <Auth />}
-        {/* {isAuth && track && <TrackDetails track={track} />} */}
+        {isAuth && track && <TrackDetails />}
       </main>
     </Layout>
   );

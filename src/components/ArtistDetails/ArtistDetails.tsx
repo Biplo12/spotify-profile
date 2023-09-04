@@ -1,19 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react';
 
-interface IArtistDetailsProps {
-  artist: {
-    name: string;
-    image: string;
-    followers: number;
-    genres: string[];
-    popularity: number;
-  };
-}
+import { useAppSelector } from '@/store/store-hooks';
 
-const ArtistDetails: React.FC<IArtistDetailsProps> = ({
-  artist,
-}): JSX.Element => {
+const ArtistDetails: React.FC = (): JSX.Element => {
+  const artist = useAppSelector((state) => state.global.artistDetails);
   const genresArray = artist.genres.map((genre) =>
     genre
       .split(' ')

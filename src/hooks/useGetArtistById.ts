@@ -1,6 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { useEffect } from 'react';
 
 import { getFromLocalStorage } from '@/lib/helper';
 
@@ -22,23 +21,22 @@ const useGetArtistById = (id: string) => {
     enabled: !!access_token && !!id,
   });
 
-  useEffect(() => {
-    const handleFetchArtistByRange = async () => {
-      if (!access_token) return;
-      const { data: artist } = await fetchArtistById();
-      if (!artist) return;
-      const artistDetails = artist?.data;
-      const artistData = {
-        name: artistDetails.name,
-        image: artistDetails.images?.[0]?.url,
-        followers: artistDetails.followers.total,
-        popularity: artistDetails.popularity,
-        genres: artistDetails.genres,
-      };
-      dispatch(setArtistDetails(artistData));
+  const handleFetchArtistById = async () => {
+    if (!access_token) return;
+    const { data: artist } = await fetchArtistById();
+    if (!artist) return;
+    const artistDetails = artist?.data;
+    const artistData = {
+      id: artistDetails.id,
+      name: artistDetails.name,
+      image: artistDetails.images?.[0]?.url,
+      followers: artistDetails.followers.total,
+      popularity: artistDetails.popularity,
+      genres: artistDetails.genres,
     };
-    handleFetchArtistByRange();
-  }, [dispatch, access_token, fetchArtistById]);
+    dispatch(setArtistDetails(artistData));
+  };
+  return handleFetchArtistById;
 };
 
 export default useGetArtistById;

@@ -1,6 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { useEffect } from 'react';
 
 import { getFromLocalStorage } from '@/lib/helper';
 
@@ -56,7 +55,7 @@ interface IPlaylist {
 const useGetUserDetails = () => {
   const access_token = getFromLocalStorage('access_token');
   const dispatch = useAppDispatch();
-  const { data: playlists } = useQuery({
+  const { refetch: fetchUserPlaylists } = useQuery({
     queryKey: ['getUserPlaylists'],
     queryFn: async () =>
       await axios.get(`https://api.spotify.com/v1/me/playlists`, {
@@ -66,7 +65,7 @@ const useGetUserDetails = () => {
       }),
     enabled: !!access_token,
   });
-  const { data: artists } = useQuery({
+  const { refetch: fetchUserArtists } = useQuery({
     queryKey: ['getUserArtists'],
     queryFn: async () =>
       await axios.get(
@@ -79,7 +78,7 @@ const useGetUserDetails = () => {
       ),
     enabled: !!access_token,
   });
-  const { data: tracks } = useQuery({
+  const { refetch: fetchUserTracks } = useQuery({
     queryKey: ['getUserTracks'],
     queryFn: async () =>
       await axios.get(
@@ -92,9 +91,11 @@ const useGetUserDetails = () => {
       ),
     enabled: !!access_token,
   });
-  useEffect(() => {
-    if (!access_token) return;
-    if (!playlists) return;
+  const handleFetchUserData = async () => {
+    const { data: playlists } = await fetchUserPlaylists();
+    const { data: artists } = await fetchUserArtists();
+    const { data: tracks } = await fetchUserTracks();
+    if (!access_token || !playlists || !artists || !tracks) return;
     const playlistsData = playlists?.data?.items?.map(
       (playlist: IPlaylist) => ({
         id: playlist.id,
@@ -106,12 +107,7 @@ const useGetUserDetails = () => {
         uri: playlist.uri,
       })
     );
-    dispatch(setPlaylists(playlistsData));
-  }, [playlists, dispatch, access_token]);
 
-  useEffect(() => {
-    if (!access_token) return;
-    if (!artists) return;
     const artistsData = artists?.data?.items?.map((artist: IArtist) => ({
       id: artist.id,
       name: artist.name,
@@ -120,16 +116,7 @@ const useGetUserDetails = () => {
       popularity: artist.popularity,
       genres: artist.genres,
     }));
-    dispatch(
-      setArtists({
-        data: artistsData,
-        range: 'long_term',
-      })
-    );
-  }, [artists, dispatch, access_token]);
 
-  useEffect(() => {
-    if (!access_token) return;
     const tracksData = tracks?.data?.items?.map((track: ITrack) => ({
       id: track.id,
       name: track.name,
@@ -141,14 +128,23 @@ const useGetUserDetails = () => {
       popularity: track.popularity,
       uri: track.uri,
     }));
-    if (!tracks) return;
+
     dispatch(
       setTracks({
         data: tracksData,
         range: 'long_term',
       })
     );
-  }, [tracks, dispatch, access_token]);
+    dispatch(
+      setArtists({
+        data: artistsData,
+        range: 'long_term',
+      })
+    );
+    dispatch(setPlaylists(playlistsData));
+  };
+
+  return handleFetchUserData;
 };
 
 export default useGetUserDetails;

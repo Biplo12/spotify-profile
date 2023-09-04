@@ -45,7 +45,7 @@ const TrackDetails: React.FC<ITrackDetailsProps> = ({
     };
   }, [name, artists, album]);
 
-  const slicedName = name.slice(0, slicedEnd);
+  const slicedName = name?.slice(0, slicedEnd);
   const slicedAlbumName = album?.name.slice(0, slicedEnd);
 
   return (

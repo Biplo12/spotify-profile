@@ -25,6 +25,34 @@ export interface ITrack {
   uri: string;
 }
 
+export interface ITrackDetails {
+  name: string;
+  image: string;
+  artists: {
+    id: string;
+    name: string;
+  }[];
+  album: {
+    id: string;
+    name: string;
+    release_date: string;
+  };
+  year: number;
+  uri: string;
+  stats: {
+    duration: number;
+    key: string;
+    modality: string;
+    timeSignature: number;
+    tempo: number;
+    popularity: number;
+    bars: number;
+    beats: number;
+    sections: number;
+    segments: number;
+  };
+}
+
 export interface IPlaylist {
   id: string;
   name: string;
@@ -59,34 +87,6 @@ export default interface IGlobalReducerInterface {
   };
   recentlyPlayed: ITrack[];
   playlists: IPlaylist[];
-  artistDetails: {
-    name: string;
-    image: string;
-    followers: number;
-    genres: string[];
-    popularity: number;
-  };
-  trackDetails: {
-    name: string;
-    image: string;
-    artists: {
-      id: string;
-      name: string;
-    }[];
-    album: string;
-    year: number;
-    uri: string;
-    stats: {
-      duration: number;
-      key: string;
-      modality: string;
-      timeSignature: number;
-      tempo: number;
-      popularity: number;
-      bars: number;
-      beats: number;
-      sections: number;
-      segments: number;
-    };
-  };
+  artistDetails: IArtist;
+  trackDetails: ITrackDetails;
 }

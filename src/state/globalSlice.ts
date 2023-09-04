@@ -28,6 +28,7 @@ const initialState: IGlobalReducerInterface = {
   recentlyPlayed: [],
   playlists: [],
   artistDetails: {
+    id: '',
     name: '',
     image: '',
     followers: 0,
@@ -38,10 +39,13 @@ const initialState: IGlobalReducerInterface = {
     name: '',
     image: '',
     artists: [],
-    album: '',
+    album: {
+      id: '',
+      name: '',
+      release_date: '',
+    },
     year: 0,
     uri: '',
-
     stats: {
       duration: 0,
       key: '',

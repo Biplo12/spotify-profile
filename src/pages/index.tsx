@@ -1,4 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import * as React from 'react';
+import { useEffect } from 'react';
 
 import useCheckAuthState from '@/hooks/useCheckAuthState';
 import useGetUserDetails from '@/hooks/useGetUserDetails';
@@ -12,9 +14,15 @@ import { useAppSelector } from '@/store/store-hooks';
 
 export default function HomePage() {
   useCheckAuthState();
-  useGetUserDetails();
   const isAuth = useAppSelector((state) => state.global.isAuth);
   const renderedTab = useRenderTab();
+  const handleFetchUserPlaylists = useGetUserDetails();
+
+  useEffect(() => {
+    if (isAuth) {
+      handleFetchUserPlaylists();
+    }
+  }, [isAuth]);
   return (
     <Layout>
       <Seo />
