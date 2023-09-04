@@ -23,10 +23,10 @@ const PlaylistDetailsPage: React.FC = (): JSX.Element => {
   const playlist = useAppSelector((state) => state.global.playlistDetails);
 
   useEffect(() => {
-    if (PlaylistId) {
+    if (PlaylistId && isAuth && playlist.id !== PlaylistId) {
       handleFetchPlaylistById();
     }
-  }, [PlaylistId]);
+  }, [PlaylistId, isAuth]);
 
   useEffect(() => {
     dispatch(selectTab(''));

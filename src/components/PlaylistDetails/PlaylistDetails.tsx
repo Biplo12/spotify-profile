@@ -1,6 +1,6 @@
 import React from 'react';
 
-import GetRecommendations from '@/components/PlaylistDetails/Partials/GetRecommendations';
+import GetRecommendationsButton from '@/components/PlaylistDetails/Partials/GetRecommendationsButton';
 import PlaylistHeader from '@/components/PlaylistDetails/Partials/PlaylistHeader';
 import TracksTabList from '@/components/Tracks/Partials/TracksTabList';
 
@@ -13,7 +13,7 @@ const PlaylistDetails: React.FC = (): JSX.Element => {
     <div className='mxsm:flex-col mxsm:items-center flex w-full max-w-[1200px] items-start justify-center gap-16'>
       <div className='flex flex-col items-center justify-center gap-4'>
         <PlaylistHeader />
-        <GetRecommendations />
+        <GetRecommendationsButton />
       </div>
       <TracksTabList tracks={playlistTracks} />
     </div>

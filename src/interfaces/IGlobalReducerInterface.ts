@@ -26,6 +26,7 @@ export interface ITrack {
 }
 
 export interface ITrackDetails {
+  id: string;
   name: string;
   image: string;
   artists: {
@@ -100,6 +101,7 @@ export default interface IGlobalReducerInterface {
   isAuth: boolean;
   selectedTab: string;
   user: {
+    id: string;
     name: string;
     image: string;
     followers: number;
@@ -121,4 +123,9 @@ export default interface IGlobalReducerInterface {
   artistDetails: IArtist;
   trackDetails: ITrackDetails;
   playlistDetails: IPlaylistDetails;
+  recommendations: {
+    tracks: ITrack[];
+    playlistName: string;
+    playlistId: string;
+  };
 }

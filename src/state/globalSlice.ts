@@ -9,6 +9,7 @@ const initialState: IGlobalReducerInterface = {
   isAuth: false,
   selectedTab: 'profile',
   user: {
+    id: '',
     name: '',
     image: '',
     followers: 0,
@@ -36,6 +37,7 @@ const initialState: IGlobalReducerInterface = {
     popularity: 0,
   },
   trackDetails: {
+    id: '',
     name: '',
     image: '',
     artists: [],
@@ -70,6 +72,11 @@ const initialState: IGlobalReducerInterface = {
       total: 0,
       items: [],
     },
+  },
+  recommendations: {
+    tracks: [],
+    playlistName: '',
+    playlistId: '',
   },
 };
 
@@ -113,6 +120,9 @@ const globalSlice = createSlice({
     setPlaylistDetails: (state, action) => {
       state.playlistDetails = action.payload;
     },
+    setRecommendations: (state, action) => {
+      state.recommendations = action.payload;
+    },
   },
 });
 
@@ -128,6 +138,7 @@ export const {
   setArtistDetails,
   setTrackDetails,
   setPlaylistDetails,
+  setRecommendations,
 } = actions;
 export const selectGlobal = (state: RootState) => state.global;
 export default reducer;

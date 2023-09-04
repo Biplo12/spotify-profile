@@ -33,6 +33,7 @@ const useCheckAuthState = () => {
           dispatch(
             setUser({
               ...user,
+              id: data.data.id,
               name: data.data.display_name,
               image: data.data.images?.[0].url,
               followers: data.data.followers.total,

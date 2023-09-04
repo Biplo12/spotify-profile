@@ -23,10 +23,10 @@ const TrackDetailsPage: React.FC = (): JSX.Element => {
   const track = useAppSelector((state) => state.global.trackDetails);
 
   useEffect(() => {
-    if (TrackId) {
+    if (TrackId && isAuth && track.id !== TrackId) {
       handleFetchTrackById();
     }
-  }, [TrackId]);
+  }, [TrackId, isAuth]);
 
   useEffect(() => {
     dispatch(selectTab(''));

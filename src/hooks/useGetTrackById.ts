@@ -52,6 +52,7 @@ const useGetTrackById = (id: string) => {
     if (!trackFeatures || !track || !trackAnalysis) return;
     const trackDetails = track?.data;
     const trackData = {
+      id: trackDetails.id,
       name: trackDetails.name,
       image: trackDetails.album.images[0].url,
       artists: trackDetails.artists.map((artist: IArtist) => ({

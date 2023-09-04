@@ -43,7 +43,6 @@ The Recent tab displays the most recent tracks that the user has listened to on 
 In the Playlist tab, users can access their Spotify playlists. Upon clicking on a specific playlist, they can view all the tracks contained within it. Additionally, users have the following options:
 
 - **Get Recommendations**: Users can receive track recommendations based on the selected playlist.
-- **Save to Spotify**: From the recommended tracks, users can save their favorite songs directly to their Spotify account.
 
 ## Technology Stack
 
