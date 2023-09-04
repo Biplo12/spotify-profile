@@ -8,7 +8,7 @@ const ArtistsList: React.FC = (): JSX.Element => {
     (state) => state.global.artists
   ).long_term.slice(0, 10);
   return (
-    <div className='flex min-h-screen flex-col items-start justify-start gap-8'>
+    <div className='flex flex-col items-start justify-start gap-8'>
       {artists?.map((artist, index) => (
         <ArtistItem artist={artist} index={index} key={index} />
       ))}

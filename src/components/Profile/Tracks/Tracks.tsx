@@ -12,8 +12,8 @@ const Tracks: React.FC = (): JSX.Element => {
     dispatch(selectTab('tracks'));
   };
   return (
-    <div className='flex min-h-screen w-full max-w-[600px] flex-col items-start justify-start gap-8'>
-      <div className='flex w-full items-center justify-between gap-4'>
+    <div className='flex w-full max-w-[600px] flex-col items-start justify-start gap-8'>
+      <div className='flex w-full flex-wrap items-center justify-between gap-4'>
         <h1 className='text-xl font-bold'>Top Tracks of All Time</h1>
         <SeeMoreButton onClick={handleSeeMoreTracks} />
       </div>

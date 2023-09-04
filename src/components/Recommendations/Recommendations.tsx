@@ -9,7 +9,7 @@ const Recommendations: React.FC = (): JSX.Element => {
     (state) => state.global.recommendations
   ).tracks;
   return (
-    <div className='mxsm:items-center flex w-full max-w-[1200px] flex-col items-start justify-center gap-16'>
+    <div className='mxsm:items-center flex w-full max-w-[1350px] flex-col items-start justify-center gap-16'>
       <div className='flex w-full items-center justify-between gap-4'>
         <RecommendationsHeader />
         {/* <SaveToSpotifyButton /> */}

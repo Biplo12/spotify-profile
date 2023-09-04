@@ -10,7 +10,7 @@ const Tracks: React.FC = (): JSX.Element => {
     timeRange as 'long_term' | 'medium_term' | 'short_term'
   ];
   return (
-    <div className='flex w-full max-w-[1200px] flex-col items-start justify-start gap-8'>
+    <div className='flex w-full max-w-[1350px] flex-col items-start justify-start gap-8'>
       <TracksTabSortPanel timeRange={timeRange} setTimeRange={setTimeRange} />
       <TracksTabList tracks={tracks} />
     </div>

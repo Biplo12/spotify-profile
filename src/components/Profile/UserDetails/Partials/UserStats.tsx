@@ -22,7 +22,7 @@ const UserStats: React.FC = (): JSX.Element => {
   ];
   return (
     <div>
-      <div className='flex items-center justify-center gap-8'>
+      <div className='flex flex-wrap items-center justify-center gap-8'>
         {stats.map((stat, index) => (
           <div
             className='flex flex-col items-center justify-center'

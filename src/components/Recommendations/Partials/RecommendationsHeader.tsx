@@ -7,11 +7,11 @@ const RecommendationsHeader: React.FC = (): JSX.Element => {
     (state) => state.global.recommendations
   );
   return (
-    <div>
+    <div className='mxsm:text-center flex flex-col items-start justify-center space-y-2'>
       <h1 className='text-2xl font-bold'>Recommended Tracks Based On</h1>
       <Link
         href={`/playlist/${recommendations.playlistId}`}
-        className='hover:text-spotify-green text-xl font-bold duration-200 ease-linear'
+        className='hover:text-spotify-green text-xl duration-200 ease-linear'
       >
         {recommendations.playlistName}
       </Link>

@@ -12,7 +12,7 @@ const ArtistsTabList: React.FC<IArtistsTabListProps> = ({
   artists,
 }): JSX.Element => {
   return (
-    <div className='grid-container min-h-screen w-full'>
+    <div className='grid-container mxsm:justify-center mxsm:items-center min-h-screen w-full items-start justify-start'>
       {artists?.map((artist, index) => (
         <ArtistTabItem
           image={artist.image}

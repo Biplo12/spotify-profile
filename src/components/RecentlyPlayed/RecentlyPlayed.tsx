@@ -9,7 +9,7 @@ const RecentlyPlayed: React.FC = (): JSX.Element => {
   useGetRecentlyPlayed();
   const recentlyPlayed = useAppSelector((state) => state.global.recentlyPlayed);
   return (
-    <div className='flex w-full max-w-[1200px] flex-col items-start justify-start gap-8'>
+    <div className='flex w-full max-w-[1350px] flex-col items-start justify-start gap-8'>
       <h1 className='text-center text-2xl font-bold'>
         Recently Played Trackss
       </h1>

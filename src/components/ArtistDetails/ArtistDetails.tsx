@@ -31,7 +31,7 @@ const ArtistDetails: React.FC = (): JSX.Element => {
     },
   ];
   return (
-    <div className='flex w-full max-w-[1200px] flex-col items-center justify-center gap-16'>
+    <div className='flex w-full max-w-[1350px] flex-col items-center justify-center gap-16'>
       <img
         src={artist.image}
         alt={artist.name}

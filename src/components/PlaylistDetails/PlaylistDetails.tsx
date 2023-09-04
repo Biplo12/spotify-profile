@@ -10,7 +10,7 @@ const PlaylistDetails: React.FC = (): JSX.Element => {
     (state) => state.global.playlistDetails
   ).tracks.items.map((item) => item.track);
   return (
-    <div className='mxsm:flex-col mxsm:items-center flex w-full max-w-[1200px] items-start justify-center gap-16'>
+    <div className='mxsm:flex-col mxsm:items-center flex w-full max-w-[1350px] items-start justify-center gap-16'>
       <div className='flex flex-col items-center justify-center gap-4'>
         <PlaylistHeader />
         <GetRecommendationsButton />
