@@ -11,7 +11,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <>
       {isAuth && <Sidebar />}
       {children}
-      <Footer />
+      {isAuth && <Footer />}
     </>
   );
 }
