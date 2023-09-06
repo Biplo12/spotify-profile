@@ -1,5 +1,8 @@
 # Spotify Profile Summary Documentation
 
+# Awaiting Spotify API Quota Approval
+Please note that the Spotify Profile project is currently awaiting approval for API quota from Spotify. Until approval is granted, the project may have limited functionality when deployed to a live environment. As a result, the only way to test and use the application at the moment is to clone the project and run it locally on your machine.
+
 ## Introduction
 
 Welcome to the documentation for **Spotify Profile**, a project heavily inspired by Brittany Chiang. This project provides users with a comprehensive summary of their Spotify profile, including user details, top artists, and top tracks. It is built using Next.js, Tailwind CSS, the Spotify Web API, and TypeScript.
